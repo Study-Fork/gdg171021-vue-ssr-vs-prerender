@@ -1,0 +1,13 @@
+{
+    "name": "wan2land/ppt-vue-ssr-vs-prerender",
+    "authors": [
+        {
+            "name": "Changwan Jun",
+            "email": "im@wani.kr"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.8",
+        "slim/twig-view": "^2.3"
+    }
+}
