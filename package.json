@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "webpack --hide-modules --config ./build/webpack.prod.conf.js --watch"
+    "dev": "webpack --hide-modules --config ./build/webpack.prod.conf.js --watch",
+    "prerender": "rimraf views/_prerendered && webpack --hide-modules --config ./build/webpack.prerender.conf.js"
   },
   "dependencies": {
     "bootstrap": "4",
@@ -10,7 +11,12 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-preset-es2015-ie": "^6.7.0",
     "copy-webpack-plugin": "^4.1.1",
+    "html-webpack-plugin": "^2.30.1",
+    "jsdom": "^11.3.0",
+    "prerender-spa-plugin": "^2.1.0",
+    "rimraf": "^2.6.2",
     "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
     "vue-loader": "^13.3.0",
     "vue-template-compiler": "^2.5.2",

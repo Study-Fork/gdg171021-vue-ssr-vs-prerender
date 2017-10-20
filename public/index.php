@@ -16,7 +16,11 @@ $container['view'] = function ($container) {
 
 // handle vue controller
 $vueResponseHandler = function ($request, $response, $args) {
-    return $this->view->render($response, 'vue.twig');
+    try {
+        return $this->view->render($response, '_prerendered' . $request->getUri()->getPath() . '/index.twig');
+    } catch (Twig_Error_Loader $e) {
+        return $this->view->render($response, 'vue.twig');
+    }
 };
 
 // routing
