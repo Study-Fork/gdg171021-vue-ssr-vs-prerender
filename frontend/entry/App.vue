@@ -4,10 +4,16 @@
       <div class="container">
         <router-link class="navbar-brand" to="/">Home</router-link>
         <div class="navbar-nav">
-          <router-link class="nav-item nav-link" to="/about">About</router-link>
-          <router-link class="nav-item nav-link" to="/contact">Contact</router-link>
-          <a class="nav-item nav-link" @click="login" v-if="!isLogin">Login</a>
-          <a class="nav-item nav-link" @click="logout" v-else>Logout</a>
+          <template v-if="prerender">
+            <a class="nav-item nav-link" href="/about" hidden>About</a>
+            <a class="nav-item nav-link" href="/contact" hidden>Contact</a>
+          </template>
+          <template v-else>
+            <router-link class="nav-item nav-link" to="/about">About</router-link>
+            <router-link class="nav-item nav-link" to="/contact">Contact</router-link>
+            <a class="nav-item nav-link" @click="login" v-if="!isLogin">Login</a>
+            <a class="nav-item nav-link" @click="logout" v-else>Logout</a>
+          </template>
         </div>
       </div>
     </nav>
@@ -23,6 +29,7 @@
   export default {
     data() {
       return {
+        prerender: process.env.PRERENDER,
         isLogin: window.localStorage.getItem("login") === "true",
       }
     },

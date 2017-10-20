@@ -1,5 +1,6 @@
 
 const path = require('path')
+const webpack = require("webpack");
 const merge = require('webpack-merge');
 
 const baseConfig = require('./webpack.base.conf');
@@ -19,6 +20,9 @@ module.exports = merge(baseConfig, {
     filename: 'app.js',
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.PRERENDER': "true",
+    }),
     new HtmlWebpackPlugin({
       template: resolve('build/index.template.html'),
       filename: resolve('dist/index.html'),
